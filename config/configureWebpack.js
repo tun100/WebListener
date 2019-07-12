@@ -14,6 +14,7 @@ module.exports = (conf, mode) => {
       rr: 'react-router',
       rrdm: 'react-router-dom',
       utils: path.join(__dirname, 'utils.js'),
+      routeMap: path.join(__dirname, 'RouteMap.js'),
       mobxReact: 'mobx-react'
     }),
     ...conf.plugins

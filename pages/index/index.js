@@ -1,7 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, StaticRouter, Route, Link } from 'react-router-dom'
 import App from './App'
 
+// initialize window variables
+window._ = _
+window.moment = moment
 
-ReactDOM.render(<App/>, document.querySelector('#root'))
+// mount react dom
+ReactDOM.render(
+  <rrdm.BrowserRouter>
+    <App />
+  </rrdm.BrowserRouter>,
+	document.querySelector('#root')
+)

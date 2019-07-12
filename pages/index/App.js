@@ -1,9 +1,22 @@
-class App extends React.PureComponent {
+const { BrowserRouter, Route, Link } = rrdm
+let RouteHelper = routeMap;
+
+export default crc({
   render () {
-    return <div>test</div>
+    return (
+      <rrdm.Switch>
+        {RouteHelper.getRoute('main', {
+          exact: true,
+          path: '/'
+        })}
+        {RouteHelper.getRoute('main', {
+          path: '/main'
+        })}
+        {RouteHelper.getRoute('login', {
+          path: '/login'
+        })}
+        <rrdm.Redirect to={{ pathname: '/login' }} />
+      </rrdm.Switch>
+    )
   }
-}
-
-utils.log(crc)
-
-export default App
+})
