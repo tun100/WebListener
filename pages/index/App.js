@@ -1,19 +1,21 @@
 const { BrowserRouter, Route, Link } = rrdm
-let RouteHelper = routeMap;
 
 export default crc({
   render () {
     return (
       <rrdm.Switch>
-        {RouteHelper.getRoute('main', {
+        {cpt.getRoute('main', {
           exact: true,
           path: '/'
         })}
-        {RouteHelper.getRoute('main', {
+        {cpt.getRoute('main', {
           path: '/main'
         })}
-        {RouteHelper.getRoute('login', {
+        {cpt.getRoute('login', {
           path: '/login'
+        })}
+        {cpt.getRoute('secure', {
+          path: '/secure'
         })}
         <rrdm.Redirect to={{ pathname: '/login' }} />
       </rrdm.Switch>
