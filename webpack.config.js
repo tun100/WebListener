@@ -91,6 +91,7 @@ module.exports = mode => {
     },
     plugins: _.filter(
       [
+        // new webpack.Provi
         new VueLoaderPlugin(),
         new CleanWebpackPlugin([distdir], {
           allowExternal: true
