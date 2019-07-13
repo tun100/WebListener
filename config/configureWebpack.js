@@ -14,8 +14,9 @@ module.exports = (conf, mode) => {
       rr: 'react-router',
       antd: 'antd',
       rrdm: 'react-router-dom',
-      utils: path.join(__dirname, 'utils.js'),
-      cpt: path.join(__dirname, 'cpt.js'),
+      utils: path.join(__dirname, 'object_utils.js'),
+      cpt: path.join(__dirname, 'object_cpt.js'),
+      gcpt: path.join(__dirname, 'decorator_gcpt.js'),
       mobxReact: 'mobx-react'
     }),
     ...conf.plugins

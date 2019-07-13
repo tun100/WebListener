@@ -1,9 +1,10 @@
-export default crc({
-  render () {
-    return (
-      <div>
-        <div>login</div>
-      </div>
-    )
-  }
-})
+const { observer, inject } = mobxReact;
+
+@gcpt
+@observer
+export default class LoginPage {
+	render() {
+		console.log(this);
+		return <div>test</div>;
+	}
+}
