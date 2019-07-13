@@ -12,6 +12,7 @@ module.exports = (conf, mode) => {
       crc: 'create-react-class',
       mobx: 'mobx',
       rr: 'react-router',
+      antd: 'antd',
       rrdm: 'react-router-dom',
       utils: path.join(__dirname, 'utils.js'),
       cpt: path.join(__dirname, 'cpt.js'),

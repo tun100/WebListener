@@ -5,7 +5,6 @@ const moment = require('moment')
 
 app.use(async ctx => {
   if ((_.startsWith(ctx.path), '/login')) {
-
   }
 })
 

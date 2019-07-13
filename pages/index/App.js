@@ -4,7 +4,7 @@ export default crc({
   render () {
     return (
       <rrdm.Switch>
-        {cpt.getRoute('main', {
+        {cpt.getRoute('login', {
           exact: true,
           path: '/'
         })}

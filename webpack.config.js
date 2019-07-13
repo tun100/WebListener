@@ -148,7 +148,7 @@ module.exports = mode => {
         },
         {
           test: /\.less$/,
-          exclude: /antd/,
+          // exclude: /antd/,
           use: createStyleUseObject()
         },
         {
