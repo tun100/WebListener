@@ -29,7 +29,6 @@ const utils = {
 function createStyleUseObject (isModule = true) {
   return [
     { loader: MiniCssExtractPlugin.loader },
-    {loader: 'postcss-loader'},
     {
       loader: 'css-loader',
       options:
@@ -44,7 +43,8 @@ function createStyleUseObject (isModule = true) {
     },
     {
       loader: 'less-loader'
-    }
+    },
+            {loader: 'postcss-loader'},
   ]
 }
 // variables declare

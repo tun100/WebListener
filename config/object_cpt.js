@@ -1,3 +1,5 @@
+var a = {};
+var boki = { ...a };
 var loadable = require('loadable-components').default;
 var cptManager = require.context('../cpt');
 
@@ -26,9 +28,9 @@ const cptMapForPathInfo = basicTranslateObj
 
 module.exports = {
 	map: cptMap,
-	getCpt(tagName, props = {}, children) {
+	getCpt(tagName, props = {}, children='') {
 		const CrtTag = _.get(cptMap, [routeName, 'default']);
-		return <CrtTag {...props}>{...children}</CrtTag>;
+		return <CrtTag {...props}>{children}</CrtTag>;
 	},
 	getRoute(routeName, props = {}) {
 		let moduleObj = cptMap[routeName];
