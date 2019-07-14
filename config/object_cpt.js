@@ -1,5 +1,3 @@
-var a = {};
-var boki = { ...a };
 var loadable = require('loadable-components').default;
 var cptManager = require.context('../cpt');
 
