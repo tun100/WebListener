@@ -5,7 +5,7 @@ import App from './App'
 import 'antd/dist/antd.less'
 import '../../less/theme.less'
 import './index.less'
-import store from './store.js'
+import store from '../../config/mobx_store.js'
 const { Provider } = mobxReact
 
 // initialize window variables
