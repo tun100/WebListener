@@ -5,6 +5,9 @@ const crtUtils = {
   contains (val, str) {
     return _.indexOf(val, str) !== -1
   },
+  info: {
+    title: ''  
+  }
 }
 
 module.exports = crtUtils

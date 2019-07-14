@@ -19,6 +19,8 @@ const happyThreadPool = HappyPack.ThreadPool({
   size: os.cpus().length
 })
 // function declare
+const node_modules_path = path.normalize(path.join(__dirname, 'node_modules'))
+const noModuleArr = [node_modules_path, /^~/gi]
 const utils = {
   getCrtPath: relativePath => {
     return path.join(__dirname, relativePath)
@@ -26,14 +28,23 @@ const utils = {
 }
 function createStyleUseObject (isModule = true) {
   return [
-		{ loader: MiniCssExtractPlugin.loader },
+    { loader: MiniCssExtractPlugin.loader },
+    {loader: 'postcss-loader'},
     {
       loader: 'css-loader',
-      query: isModule
-				? { modules: true, localIdentName: '[name]__[local]___[hash:base64:5]' }
-				: { modules: false }
+      options:
+				isModule === true
+					? {
+  modules: true,
+  localIdentName: '[name]__[local]___[hash:base64:5]'
+							//  modules: true,
+							//   localIdentName: '[hash:base64:6]'
+					  }
+					: { modules: false }
     },
-		{ loader: 'less-loader' }
+    {
+      loader: 'less-loader'
+    }
   ]
 }
 // variables declare
@@ -66,7 +77,7 @@ if (entryobj['index']) {
 	)
 }
 
-var configureWebpack = require('./config/configureWebpack');
+var configureWebpack = require('./config/configureWebpack')
 
 module.exports = mode => {
   var isDev = mode === 'dev'
@@ -91,7 +102,7 @@ module.exports = mode => {
     },
     plugins: _.filter(
       [
-        // new webpack.Provi
+				// new webpack.Provi
         new VueLoaderPlugin(),
         new CleanWebpackPlugin([distdir], {
           allowExternal: true
@@ -148,8 +159,13 @@ module.exports = mode => {
         },
         {
           test: /\.less$/,
-          // exclude: /antd/,
-          use: createStyleUseObject()
+          exclude: noModuleArr,
+          use: createStyleUseObject(true)
+        },
+        {
+          test: /\.less$/,
+          include: noModuleArr,
+          use: createStyleUseObject(false)
         },
         {
           test: /\.(js|jsx)$/,
@@ -180,5 +196,5 @@ module.exports = mode => {
     }
   }
 
-  return configureWebpack(webpackConfig,mode);
+  return configureWebpack(webpackConfig, mode)
 }
