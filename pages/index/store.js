@@ -13,13 +13,15 @@ class GlobalStore {
 		login_time: null,
 	};
 
+	@observable is_redirect_main = false;
+
 	@computed get calc_is_login() {
 		return this.login_info.is_login;
 	}
 
 	action_login = utils.flow(function*(userinfo) {
 		var { info } = utils;
-		utils.log(userinfo);
+		// utils.log(userinfo);
 		if (info.user === userinfo.username && info.password === userinfo.password) {
 			utils.log('login success');
 			message.success(`鉴权成功，正跳转主应用中`);
@@ -30,6 +32,7 @@ class GlobalStore {
 				},
 				login_time: utils.now(),
 			});
+			utils.store.is_redirect_main = true;
 		} else {
 			utils.log('login failed');
 			message.error(`鉴权失败`);

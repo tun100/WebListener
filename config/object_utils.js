@@ -1,5 +1,11 @@
 const { flow, transaction } = mobx
 const crtUtils = {
+  defer (func, timeval) {
+    return setTimeout(func, timeval)
+  },
+  isdev () {
+    return !_.isNil(localStorage.getItem('DEV_MODE'))
+  },
   flow (func) {
     return flow(func)
   },

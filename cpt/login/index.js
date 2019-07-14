@@ -55,13 +55,19 @@ class WrapperLoginForm {
 @inject(state => {
 	return {
 		is_login: state.store.calc_is_login,
+		is_redirect_main: state.store.is_redirect_main,
 	};
 })
 @observer
 @gcpt
 export default class LoginPage {
 	render() {
-		if (this.props.is_login) {
+		utils.log('login rendering', this);
+		if (this.props.is_login && this.props.is_redirect_main) {
+			// quick update redirect main by defer, cannot change store value when rendering
+			utils.defer(() => {
+				utils.store.is_redirect_main = false;
+			}, 0);
 			return <rrdm.Redirect to="/main" />;
 		}
 		return (

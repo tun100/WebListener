@@ -12,7 +12,8 @@ export default class AppPage {
 			path: '/login',
 		});
 		const redirect_login = <rrdm.Redirect to={{ pathname: '/login' }} />;
-		if (!this.is_login) {
+		const allow_webaccess = !this.props.is_login;
+		if (allow_webaccess) {
 			return (
 				<rrdm.Switch>
 					{cpt_login}
